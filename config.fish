@@ -1,4 +1,4 @@
-source ~/kubectl-completion.fish
+kubectl completion fish | source
 alias cls=clear
 alias k='kubectl'
 alias kd='k describe'

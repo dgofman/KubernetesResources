@@ -1,0 +1,16 @@
+NAME              STATUS   AGE
+default           Active   49d
+earth             Active   49d
+jupiter           Active   49d
+kube-node-lease   Active   49d
+kube-public       Active   49d
+kube-system       Active   49d
+mars              Active   49d
+mercury           Active   49d
+moon              Active   49d
+neptune           Active   49d
+pluto             Active   49d
+saturn            Active   49d
+shell-intern      Active   49d
+sun               Active   49d
+venus             Active   49d

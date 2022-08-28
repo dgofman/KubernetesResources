@@ -42,23 +42,3 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
-status:
-  availableReplicas: 3
-  conditions:
-  - lastTransitionTime: "2022-07-08T07:59:15Z"
-    lastUpdateTime: "2022-07-08T07:59:15Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2022-07-08T08:09:16Z"
-    lastUpdateTime: "2022-07-08T08:09:16Z"
-    message: ReplicaSet "api-new-c32-574c576649" has timed out progressing.
-    reason: ProgressDeadlineExceeded
-    status: "False"
-    type: Progressing
-  observedGeneration: 5
-  readyReplicas: 3
-  replicas: 4
-  unavailableReplicas: 1
-  updatedReplicas: 1

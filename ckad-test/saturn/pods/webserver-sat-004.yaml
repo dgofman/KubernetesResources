@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    description: test server please ignore
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{"description":"test server please ignore"},"labels":{"id":"webserver-sat-004"},"name":"webserver-sat-004","namespace":"saturn"},"spec":{"containers":[{"image":"nginx:1.16.1-alpine","name":"webserver-sat","resources":{}}],"restartPolicy":"Always"}}
+  creationTimestamp: "2022-07-08T07:57:42Z"
+  labels:
+    id: webserver-sat-004
+  name: webserver-sat-004
+  namespace: saturn
+spec:
+  containers:
+  - image: nginx:1.16.1-alpine
+    imagePullPolicy: IfNotPresent
+    name: webserver-sat
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-qhksw
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: cluster1-worker1
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-qhksw
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-07-08T07:57:43Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-07-08T07:59:16Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-07-08T07:59:16Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-07-08T07:57:42Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://5f6cbf2fc070d53f1cbdf1f48e313aa99a5d9a42dd292dcbd203c12dedf17c42
+    image: docker.io/library/nginx:1.16-alpine
+    imageID: docker.io/library/nginx@sha256:5057451e461dda671da5e951019ddbff9d96a751fc7d548053523ca1f848c1ad
+    lastState: {}
+    name: webserver-sat
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-07-08T07:59:15Z"
+  hostIP: 192.168.100.12
+  phase: Running
+  podIP: 10.44.0.46
+  podIPs:
+  - ip: 10.44.0.46
+  qosClass: BestEffort
+  startTime: "2022-07-08T07:57:43Z"

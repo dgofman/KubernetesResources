@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"project-23-api","namespace":"pluto"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"project-23-api"}},"template":{"metadata":{"labels":{"app":"project-23-api"}},"spec":{"containers":[{"env":[{"name":"APP_ENV","value":"prod"},{"name":"APP_SECRET_N1","value":"IO=a4L/XkRdvN8jM=Y+"},{"name":"APP_SECRET_P1","value":"-7PA0_Z]\u003e{pwa43r)__"}],"image":"httpd:2.4-alpine","name":"httpd","volumeMounts":[{"mountPath":"/cache1","name":"cache-volume1"},{"mountPath":"/cache2","name":"cache-volume2"},{"mountPath":"/cache3","name":"cache-volume3"}]}],"volumes":[{"emptyDir":{},"name":"cache-volume1"},{"emptyDir":{},"name":"cache-volume2"},{"emptyDir":{},"name":"cache-volume3"}]}}}}
+  creationTimestamp: "2022-07-08T07:57:41Z"
+  generation: 1
+  name: project-23-api
+  namespace: pluto
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: project-23-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: project-23-api
+    spec:
+      containers:
+      - env:
+        - name: APP_ENV
+          value: prod
+        - name: APP_SECRET_N1
+          value: IO=a4L/XkRdvN8jM=Y+
+        - name: APP_SECRET_P1
+          value: -7PA0_Z]>{pwa43r)__
+        image: httpd:2.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: httpd
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /cache1
+          name: cache-volume1
+        - mountPath: /cache2
+          name: cache-volume2
+        - mountPath: /cache3
+          name: cache-volume3
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: cache-volume1
+      - emptyDir: {}
+        name: cache-volume2
+      - emptyDir: {}
+        name: cache-volume3
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2022-07-08T07:59:20Z"
+    lastUpdateTime: "2022-07-08T07:59:20Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-07-08T07:57:41Z"
+    lastUpdateTime: "2022-07-08T07:59:20Z"
+    message: ReplicaSet "project-23-api-6788458ff9" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3

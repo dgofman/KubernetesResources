@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"id":"earth-2x3-api-svc"},"name":"earth-2x3-api-svc","namespace":"earth"},"spec":{"ports":[{"name":"4546-80","port":4546,"protocol":"TCP","targetPort":80}],"selector":{"id":"earth-2x3-api"},"type":"ClusterIP"}}
+  creationTimestamp: "2022-07-08T07:57:38Z"
+  labels:
+    id: earth-2x3-api-svc
+  name: earth-2x3-api-svc
+  namespace: earth
+spec:
+  clusterIP: 10.99.55.145
+  clusterIPs:
+  - 10.99.55.145
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: 4546-80
+    port: 4546
+    protocol: TCP
+    targetPort: 80
+  selector:
+    id: earth-2x3-api
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

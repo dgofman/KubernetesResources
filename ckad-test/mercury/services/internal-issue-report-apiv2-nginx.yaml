@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: internal-issue-report-apiv2
+    meta.helm.sh/release-namespace: mercury
+  creationTimestamp: "2022-07-08T08:18:38Z"
+  labels:
+    app.kubernetes.io/instance: internal-issue-report-apiv2
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: nginx
+    helm.sh/chart: nginx-13.0.0
+  name: internal-issue-report-apiv2-nginx
+  namespace: mercury
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.108.178.111
+  clusterIPs:
+  - 10.108.178.111
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 30585
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/instance: internal-issue-report-apiv2
+    app.kubernetes.io/name: nginx
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}

@@ -1,0 +1,178 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+    cloud.weave.works/launcher-info: |-
+      {
+        "original-request": {
+          "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIyNCIsIEdpdFZlcnNpb246InYxLjI0LjEiLCBHaXRDb21taXQ6IjNkZGQwZjQ1YWE5MWUyZjMwYzcwNzM0YjE3NTYzMWJlYzViNTgyNWEiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIyLTA1LTI0VDEyOjI2OjE5WiIsIEdvVmVyc2lvbjoiZ28xLjE4LjIiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpLdXN0b21pemUgVmVyc2lvbjogdjQuNS40ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMjQiLCBHaXRWZXJzaW9uOiJ2MS4yNC4xIiwgR2l0Q29tbWl0OiIzZGRkMGY0NWFhOTFlMmYzMGM3MDczNGIxNzU2MzFiZWM1YjU4MjVhIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMi0wNS0yNFQxMjoxODo0OFoiLCBHb1ZlcnNpb246ImdvMS4xOC4yIiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+          "date": "Fri Jul 08 2022 07:44:06 GMT+0000 (UTC)"
+        },
+        "email-address": "support@weave.works"
+      }
+    deprecated.daemonset.template.generation: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{"cloud.weave.works/launcher-info":"{\n  \"original-request\": {\n    \"url\": \"/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIyNCIsIEdpdFZlcnNpb246InYxLjI0LjEiLCBHaXRDb21taXQ6IjNkZGQwZjQ1YWE5MWUyZjMwYzcwNzM0YjE3NTYzMWJlYzViNTgyNWEiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIyLTA1LTI0VDEyOjI2OjE5WiIsIEdvVmVyc2lvbjoiZ28xLjE4LjIiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpLdXN0b21pemUgVmVyc2lvbjogdjQuNS40ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMjQiLCBHaXRWZXJzaW9uOiJ2MS4yNC4xIiwgR2l0Q29tbWl0OiIzZGRkMGY0NWFhOTFlMmYzMGM3MDczNGIxNzU2MzFiZWM1YjU4MjVhIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMi0wNS0yNFQxMjoxODo0OFoiLCBHb1ZlcnNpb246ImdvMS4xOC4yIiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K\",\n    \"date\": \"Fri Jul 08 2022 07:44:06 GMT+0000 (UTC)\"\n  },\n  \"email-address\": \"support@weave.works\"\n}"},"labels":{"name":"weave-net"},"name":"weave-net","namespace":"kube-system"},"spec":{"minReadySeconds":5,"selector":{"matchLabels":{"name":"weave-net"}},"template":{"metadata":{"labels":{"name":"weave-net"}},"spec":{"containers":[{"command":["/home/weave/launch.sh"],"env":[{"name":"HOSTNAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"spec.nodeName"}}},{"name":"INIT_CONTAINER","value":"true"}],"image":"ghcr.io/weaveworks/launcher/weave-kube:2.8.1","name":"weave","readinessProbe":{"httpGet":{"host":"127.0.0.1","path":"/status","port":6784}},"resources":{"requests":{"cpu":"50m","memory":"100Mi"}},"securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/weavedb","name":"weavedb"},{"mountPath":"/host/var/lib/dbus","name":"dbus"},{"mountPath":"/host/etc/machine-id","name":"machine-id","readOnly":true},{"mountPath":"/run/xtables.lock","name":"xtables-lock"}]},{"env":[{"name":"HOSTNAME","valueFrom":{"fieldRef":{"apiVersion":"v1","fieldPath":"spec.nodeName"}}}],"image":"ghcr.io/weaveworks/launcher/weave-npc:2.8.1","name":"weave-npc","resources":{"requests":{"cpu":"50m","memory":"100Mi"}},"securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/run/xtables.lock","name":"xtables-lock"}]}],"dnsPolicy":"ClusterFirstWithHostNet","hostNetwork":true,"initContainers":[{"command":["/home/weave/init.sh"],"image":"ghcr.io/weaveworks/launcher/weave-kube:2.8.1","name":"weave-init","securityContext":{"privileged":true},"volumeMounts":[{"mountPath":"/host/opt","name":"cni-bin"},{"mountPath":"/host/home","name":"cni-bin2"},{"mountPath":"/host/etc","name":"cni-conf"},{"mountPath":"/lib/modules","name":"lib-modules"},{"mountPath":"/run/xtables.lock","name":"xtables-lock"}]}],"priorityClassName":"system-node-critical","restartPolicy":"Always","securityContext":{"seLinuxOptions":{}},"serviceAccountName":"weave-net","tolerations":[{"effect":"NoSchedule","operator":"Exists"},{"effect":"NoExecute","operator":"Exists"}],"volumes":[{"hostPath":{"path":"/var/lib/weave"},"name":"weavedb"},{"hostPath":{"path":"/opt"},"name":"cni-bin"},{"hostPath":{"path":"/home"},"name":"cni-bin2"},{"hostPath":{"path":"/etc"},"name":"cni-conf"},{"hostPath":{"path":"/var/lib/dbus"},"name":"dbus"},{"hostPath":{"path":"/lib/modules"},"name":"lib-modules"},{"hostPath":{"path":"/etc/machine-id","type":"FileOrCreate"},"name":"machine-id"},{"hostPath":{"path":"/run/xtables.lock","type":"FileOrCreate"},"name":"xtables-lock"}]}},"updateStrategy":{"type":"RollingUpdate"}}}
+  creationTimestamp: "2022-07-08T07:44:06Z"
+  generation: 1
+  labels:
+    name: weave-net
+  name: weave-net
+  namespace: kube-system
+spec:
+  minReadySeconds: 5
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      name: weave-net
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: weave-net
+    spec:
+      containers:
+      - command:
+        - /home/weave/launch.sh
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: INIT_CONTAINER
+          value: "true"
+        image: ghcr.io/weaveworks/launcher/weave-kube:2.8.1
+        imagePullPolicy: IfNotPresent
+        name: weave
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            host: 127.0.0.1
+            path: /status
+            port: 6784
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi
+        securityContext:
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /weavedb
+          name: weavedb
+        - mountPath: /host/var/lib/dbus
+          name: dbus
+        - mountPath: /host/etc/machine-id
+          name: machine-id
+          readOnly: true
+        - mountPath: /run/xtables.lock
+          name: xtables-lock
+      - env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        image: ghcr.io/weaveworks/launcher/weave-npc:2.8.1
+        imagePullPolicy: IfNotPresent
+        name: weave-npc
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi
+        securityContext:
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /run/xtables.lock
+          name: xtables-lock
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      initContainers:
+      - command:
+        - /home/weave/init.sh
+        image: ghcr.io/weaveworks/launcher/weave-kube:2.8.1
+        imagePullPolicy: IfNotPresent
+        name: weave-init
+        resources: {}
+        securityContext:
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /host/opt
+          name: cni-bin
+        - mountPath: /host/home
+          name: cni-bin2
+        - mountPath: /host/etc
+          name: cni-conf
+        - mountPath: /lib/modules
+          name: lib-modules
+        - mountPath: /run/xtables.lock
+          name: xtables-lock
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        seLinuxOptions: {}
+      serviceAccount: weave-net
+      serviceAccountName: weave-net
+      terminationGracePeriodSeconds: 30
+      tolerations:
+      - effect: NoSchedule
+        operator: Exists
+      - effect: NoExecute
+        operator: Exists
+      volumes:
+      - hostPath:
+          path: /var/lib/weave
+          type: ""
+        name: weavedb
+      - hostPath:
+          path: /opt
+          type: ""
+        name: cni-bin
+      - hostPath:
+          path: /home
+          type: ""
+        name: cni-bin2
+      - hostPath:
+          path: /etc
+          type: ""
+        name: cni-conf
+      - hostPath:
+          path: /var/lib/dbus
+          type: ""
+        name: dbus
+      - hostPath:
+          path: /lib/modules
+          type: ""
+        name: lib-modules
+      - hostPath:
+          path: /etc/machine-id
+          type: FileOrCreate
+        name: machine-id
+      - hostPath:
+          path: /run/xtables.lock
+          type: FileOrCreate
+        name: xtables-lock
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+status:
+  currentNumberScheduled: 2
+  desiredNumberScheduled: 2
+  numberAvailable: 2
+  numberMisscheduled: 0
+  numberReady: 2
+  observedGeneration: 1
+  updatedNumberScheduled: 2

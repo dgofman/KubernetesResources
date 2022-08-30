@@ -47,7 +47,7 @@ sudo mkdir -p /Volumes/Data
 
 sudo rm -rf /opt/course
 
-sudo cp ../opt/course /opt
+sudo cp -r ../opt/course /opt
 
 sudo chown -R $(id -u):$(id -g) /opt/course /src/bin/app /Volumes/Data
 

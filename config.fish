@@ -1,14 +1,16 @@
-kubectl completion fish | source
-alias cls=clear
 alias k='kubectl'
-alias kd='k describe'
-alias kaf='k apply --force -f'
+k completion fish | source
+
+alias kn 'k config set-context --current --namespace'
+
+alias ka='k apply --force -f'
 alias kc='k create --dry-run=client -o yaml'
 alias kcp='k run -o yaml --dry-run=client --restart=Never --image'
+
+alias kd='k describe'
 alias kg='k get --show-labels'
-alias kgp='k get pods --show-labels'
-alias kcr='k set resources --local -o yaml -f'
-alias kce='k set env --local -o yaml -f'
-alias ksn 'k config set-context --current --namespace'
-alias kcb='k run testbb --image=busybox --restart=Never --command sleep infinity'
-alias keb='k exec testbb -it -- /bin/sh'
+alias kga='kg all'
+alias kgp='k get pods -o wide -w'
+
+-- k run -n default tmp --image=nginx:alpine --restart=Never --command -- sleep infinity
+alias ke='k exec -n default tmp -it -- sh'  # curl {IP}.{NAMESPACE}:{PORT}

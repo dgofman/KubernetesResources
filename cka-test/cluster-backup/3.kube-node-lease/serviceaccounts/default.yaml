@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  creationTimestamp: "2022-09-29T13:44:43Z"
-  name: default
-  namespace: kube-node-lease
-  resourceVersion: "333"
-  uid: f928b381-231f-476e-9ddc-bc68ec550d57

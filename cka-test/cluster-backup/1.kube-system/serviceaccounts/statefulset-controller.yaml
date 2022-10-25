@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:29Z"
+  name: statefulset-controller
+  namespace: kube-system
+  resourceVersion: "214"
+  uid: 8bbf73d6-ee87-4440-b3cd-41e9c2ebf6ca

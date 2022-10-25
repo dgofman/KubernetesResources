@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "3"
+    deployment.kubernetes.io/max-replicas: "4"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generation: 1
+  labels:
+    id: web-test
+    pod-template-hash: 599796b486
+  name: web-test-599796b486
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: web-test
+    uid: 7480060f-27f8-4fc7-8635-acb41d08bc59
+  resourceVersion: "5218"
+  uid: 859be8d1-6ca0-4061-a828-828f2f4ac2f0
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      id: web-test
+      pod-template-hash: 599796b486
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: web-test
+        pod-template-hash: 599796b486
+    spec:
+      containers:
+      - image: httpd:2.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: httpd
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  fullyLabeledReplicas: 3
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3

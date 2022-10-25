@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:31:25Z"
+  creationTimestamp: "2022-09-29T14:30:57Z"
+  labels:
+    id: c13-2x3-web-svc
+  name: c13-2x3-web-svc
+  namespace: project-c13
+  resourceVersion: "5322"
+  uid: cc8fc49e-d16f-442e-a0d2-02d76955c1af
+subsets:
+- addresses:
+  - ip: 10.44.0.4
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: c13-2x3-web-9f79d8d4-dr6nx
+      namespace: project-c13
+      uid: 8b0411e9-687b-48f1-a190-27918dabb65f
+  - ip: 10.44.0.5
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: c13-2x3-web-9f79d8d4-sxpxg
+      namespace: project-c13
+      uid: 1a1b7eec-30d3-4b10-ab44-b7124308f40a
+  - ip: 10.44.0.7
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: c13-2x3-web-9f79d8d4-qkv2j
+      namespace: project-c13
+      uid: 70513a05-76f3-48ea-983f-01e76d96b2b4
+  - ip: 10.47.0.4
+    nodeName: cluster1-worker2
+    targetRef:
+      kind: Pod
+      name: c13-2x3-web-9f79d8d4-npn9r
+      namespace: project-c13
+      uid: 63beed62-41b9-4b46-9a0a-8660ffede6ef
+  - ip: 10.47.0.6
+    nodeName: cluster1-worker2
+    targetRef:
+      kind: Pod
+      name: c13-2x3-web-9f79d8d4-c6fz8
+      namespace: project-c13
+      uid: 64f89033-b99d-40fd-8c83-2b1e5895bad8
+  - ip: 10.47.0.8
+    nodeName: cluster1-worker2
+    targetRef:
+      kind: Pod
+      name: c13-2x3-web-9f79d8d4-7kmmv
+      namespace: project-c13
+      uid: 6751db4c-a0c5-46ff-b21e-fc76f8dc1c9c
+  ports:
+  - name: 4545-80
+    port: 80
+    protocol: TCP

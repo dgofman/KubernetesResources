@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"tag":"heavy","type":"runner"},"name":"c14-3cc-runner-heavy","namespace":"project-c14"},"spec":{"replicas":2,"selector":{"matchLabels":{"id":"c14-3cc-runner-heavy"}},"template":{"metadata":{"labels":{"id":"c14-3cc-runner-heavy"}},"spec":{"containers":[{"args":["sh","-c","sleep 2d"],"image":"python:3.7.4-alpine3.9","name":"python"}]}}}}
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generation: 1
+  labels:
+    tag: heavy
+    type: runner
+  name: c14-3cc-runner-heavy
+  namespace: project-c14
+  resourceVersion: "5470"
+  uid: 5298a467-90db-4914-bddb-4f036e8e1aee
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      id: c14-3cc-runner-heavy
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: c14-3cc-runner-heavy
+    spec:
+      containers:
+      - args:
+        - sh
+        - -c
+        - sleep 2d
+        image: python:3.7.4-alpine3.9
+        imagePullPolicy: IfNotPresent
+        name: python
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2022-09-29T14:31:36Z"
+    lastUpdateTime: "2022-09-29T14:31:36Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-09-29T14:30:59Z"
+    lastUpdateTime: "2022-09-29T14:31:36Z"
+    message: ReplicaSet "c14-3cc-runner-heavy-85dbd4b49c" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2
+  updatedReplicas: 2

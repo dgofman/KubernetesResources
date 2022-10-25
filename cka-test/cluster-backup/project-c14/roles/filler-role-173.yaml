@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{},"creationTimestamp":null,"name":"filler-role-173","namespace":"project-c14"},"rules":[{"apiGroups":[""],"resources":["pods"],"verbs":["get","list","watch"]}]}
+  creationTimestamp: "2022-09-29T14:30:55Z"
+  name: filler-role-173
+  namespace: project-c14
+  resourceVersion: "4491"
+  uid: cef315fe-57f5-4e44-bc97-e8296a191b30
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch

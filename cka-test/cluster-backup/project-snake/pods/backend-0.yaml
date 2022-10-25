@@ -1,0 +1,110 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generateName: backend-
+  labels:
+    app: backend
+    controller-revision-hash: backend-5cdcbdc886
+    statefulset.kubernetes.io/pod-name: backend-0
+  name: backend-0
+  namespace: project-snake
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: backend
+    uid: f8a9f09c-e775-4bc4-805e-98486426acd7
+  resourceVersion: "5336"
+  uid: 206b2399-05b3-47ea-96c9-faf710e9034f
+spec:
+  containers:
+  - image: nginx:1.19.2-alpine
+    imagePullPolicy: IfNotPresent
+    name: backend
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-qn2lg
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostname: backend-0
+  nodeName: cluster1-worker1
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  subdomain: vault
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-qn2lg
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:59Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:28Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:28Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:59Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://fcdb0bf81e7d198d633862f6dd727afef8a05c45baf19b8e68e83ea5444b132c
+    image: docker.io/library/nginx:1.19.2-alpine
+    imageID: docker.io/library/nginx@sha256:a97eb9ecc708c8aa715ccfb5e9338f5456e4b65575daf304f108301f3b497314
+    lastState: {}
+    name: backend
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-09-29T14:31:28Z"
+  hostIP: 192.168.100.12
+  phase: Running
+  podIP: 10.44.0.10
+  podIPs:
+  - ip: 10.44.0.10
+  qosClass: BestEffort
+  startTime: "2022-09-29T14:30:59Z"

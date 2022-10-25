@@ -1,0 +1,26 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints: null
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:30:58Z"
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generateName: service-am-i-ready-
+  generation: 1
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    id: cross-server-ready
+    kubernetes.io/service-name: service-am-i-ready
+  name: service-am-i-ready-s7rcp
+  namespace: default
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: service-am-i-ready
+    uid: 03981930-13d9-4133-8e23-9704c2a24807
+  resourceVersion: "4762"
+  uid: 2c115748-4afe-4726-8bb8-f88f5958e509
+ports: null

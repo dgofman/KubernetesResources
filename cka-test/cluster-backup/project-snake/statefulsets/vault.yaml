@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"name":"vault","namespace":"project-snake"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"vault"}},"serviceName":"vault","template":{"metadata":{"labels":{"app":"vault"}},"spec":{"containers":[{"image":"nginx:1.19.2-alpine","name":"vault","volumeMounts":[{"mountPath":"/etc/nginx/nginx.conf","name":"nginx-config","subPath":"nginx.conf"}]}],"volumes":[{"configMap":{"name":"vault"},"name":"nginx-config"}]}}}}
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generation: 1
+  name: vault
+  namespace: project-snake
+  resourceVersion: "5352"
+  uid: b1934108-aae8-4208-bd21-e8f5b61ea64c
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: vault
+  serviceName: vault
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: vault
+    spec:
+      containers:
+      - image: nginx:1.19.2-alpine
+        imagePullPolicy: IfNotPresent
+        name: vault
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/nginx/nginx.conf
+          name: nginx-config
+          subPath: nginx.conf
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: vault
+        name: nginx-config
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate
+status:
+  availableReplicas: 1
+  collisionCount: 0
+  currentReplicas: 1
+  currentRevision: vault-6dd8b6c76
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updateRevision: vault-6dd8b6c76
+  updatedReplicas: 1

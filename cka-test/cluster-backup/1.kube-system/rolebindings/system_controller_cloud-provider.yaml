@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-09-29T13:44:28Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:cloud-provider
+  namespace: kube-system
+  resourceVersion: "190"
+  uid: aa1b6f56-b4af-4a7e-bd33-182f4fe5327e
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: system:controller:cloud-provider
+subjects:
+- kind: ServiceAccount
+  name: cloud-provider
+  namespace: kube-system

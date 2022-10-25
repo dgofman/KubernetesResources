@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"o3db","namespace":"project-c13"},"spec":{"clusterIP":"None","ports":[{"name":"o3db","port":80}],"selector":{"app":"nginx"}}}
+  creationTimestamp: "2022-09-29T14:30:57Z"
+  name: o3db
+  namespace: project-c13
+  resourceVersion: "4745"
+  uid: 623364ca-bb1e-4d3e-bcbb-05750c8d5caf
+spec:
+  clusterIP: None
+  clusterIPs:
+  - None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: o3db
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

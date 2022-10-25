@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "2"
+    deployment.kubernetes.io/max-replicas: "3"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generation: 1
+  labels:
+    id: c14-3cc-runner-heavy
+    pod-template-hash: 85dbd4b49c
+  name: c14-3cc-runner-heavy-85dbd4b49c
+  namespace: project-c14
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: c14-3cc-runner-heavy
+    uid: 5298a467-90db-4914-bddb-4f036e8e1aee
+  resourceVersion: "5468"
+  uid: 38e91bcd-80e3-4944-a59f-c4ae29204328
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      id: c14-3cc-runner-heavy
+      pod-template-hash: 85dbd4b49c
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: c14-3cc-runner-heavy
+        pod-template-hash: 85dbd4b49c
+    spec:
+      containers:
+      - args:
+        - sh
+        - -c
+        - sleep 2d
+        image: python:3.7.4-alpine3.9
+        imagePullPolicy: IfNotPresent
+        name: python
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  fullyLabeledReplicas: 2
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:31:38Z"
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  labels:
+    id: c14-2x3-web-svc
+  name: c14-2x3-web-svc
+  namespace: project-c14
+  resourceVersion: "5506"
+  uid: 18d4adab-aae6-410a-8119-f5f73976404e
+subsets:
+- addresses:
+  - ip: 10.44.0.16
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: c14-2x3-web-9c5588c7d-plrqw
+      namespace: project-c14
+      uid: 185e4985-378f-414b-89b1-1bafc1ab9350
+  - ip: 10.44.0.19
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: c14-2x3-web-9c5588c7d-msbns
+      namespace: project-c14
+      uid: b8539d54-be1c-4bea-ab6d-76e80f3d9e3a
+  - ip: 10.47.0.16
+    nodeName: cluster1-worker2
+    targetRef:
+      kind: Pod
+      name: c14-2x3-web-9c5588c7d-d2w94
+      namespace: project-c14
+      uid: 556b0f08-45b7-463b-97aa-458900a03acc
+  ports:
+  - name: 4545-80
+    port: 80
+    protocol: TCP

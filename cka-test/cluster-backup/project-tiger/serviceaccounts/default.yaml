@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T14:30:53Z"
+  name: default
+  namespace: project-tiger
+  resourceVersion: "4403"
+  uid: 7be6eb79-a828-4e0e-8291-adfe1ef05448

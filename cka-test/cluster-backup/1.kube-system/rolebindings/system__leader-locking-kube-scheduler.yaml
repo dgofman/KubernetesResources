@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-09-29T13:44:28Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system::leader-locking-kube-scheduler
+  namespace: kube-system
+  resourceVersion: "188"
+  uid: 0e6d7e78-3adb-44ba-8a26-1b3ebde0a0e5
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: system::leader-locking-kube-scheduler
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: system:kube-scheduler
+- kind: ServiceAccount
+  name: kube-scheduler
+  namespace: kube-system

@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-09-29T13:44:28Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:bootstrap-signer
+  namespace: kube-system
+  resourceVersion: "179"
+  uid: 924d2f68-251c-4bc3-891d-f1a187ecb6db
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch

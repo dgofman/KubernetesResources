@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:43Z"
+  name: default
+  namespace: kube-system
+  resourceVersion: "331"
+  uid: a55d5ee5-190b-4f51-924b-05afcd9cfcc8

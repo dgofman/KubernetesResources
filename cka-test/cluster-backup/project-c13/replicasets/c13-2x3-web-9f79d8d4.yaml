@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "6"
+    deployment.kubernetes.io/max-replicas: "8"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generation: 1
+  labels:
+    id: c13-2x3-web
+    pod-template-hash: 9f79d8d4
+  name: c13-2x3-web-9f79d8d4
+  namespace: project-c13
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: c13-2x3-web
+    uid: 9f2f025e-38c8-48d7-8c80-a2bf18c5592d
+  resourceVersion: "5320"
+  uid: 4b423f35-202e-44eb-8829-2e62ed22f279
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      id: c13-2x3-web
+      pod-template-hash: 9f79d8d4
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: c13-2x3-web
+        pod-template-hash: 9f79d8d4
+    spec:
+      containers:
+      - image: httpd:2.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: httpd
+        resources:
+          requests:
+            cpu: 50m
+            memory: 10Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 6
+  fullyLabeledReplicas: 6
+  observedGeneration: 1
+  readyReplicas: 6
+  replicas: 6

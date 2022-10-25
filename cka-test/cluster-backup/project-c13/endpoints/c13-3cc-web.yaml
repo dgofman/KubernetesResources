@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:32:02Z"
+  creationTimestamp: "2022-09-29T14:30:57Z"
+  labels:
+    id: c13-3cc-web
+  name: c13-3cc-web
+  namespace: project-c13
+  resourceVersion: "5578"
+  uid: f142dde3-6cc5-41f5-9f80-69f94d1593b5
+subsets:
+- addresses:
+  - ip: 10.44.0.15
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: c13-3cc-web-77b98d5fd8-gjj7d
+      namespace: project-c13
+      uid: a3ccdc4f-8349-46a7-87fc-7fabfa8bba0a
+  - ip: 10.44.0.17
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: c13-3cc-web-77b98d5fd8-p9l98
+      namespace: project-c13
+      uid: c8f700c2-3288-4d82-a143-23be70ed0c24
+  - ip: 10.47.0.13
+    nodeName: cluster1-worker2
+    targetRef:
+      kind: Pod
+      name: c13-3cc-web-77b98d5fd8-fxrv6
+      namespace: project-c13
+      uid: e397ab3c-6883-48e0-a8d9-1bb479b51309
+  - ip: 10.47.0.9
+    nodeName: cluster1-worker2
+    targetRef:
+      kind: Pod
+      name: c13-3cc-web-77b98d5fd8-skr26
+      namespace: project-c13
+      uid: fff5a5a7-2672-4eab-afe0-2487e0d883d9
+  ports:
+  - name: 6363-80
+    port: 80
+    protocol: TCP

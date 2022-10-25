@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T14:30:53Z"
+  name: default
+  namespace: project-snake
+  resourceVersion: "4401"
+  uid: 4ebd3308-1816-4bbe-8881-414113925307

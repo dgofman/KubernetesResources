@@ -1,0 +1,117 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generateName: db1-
+  labels:
+    app: db1
+    controller-revision-hash: db1-f79bd8fb7
+    statefulset.kubernetes.io/pod-name: db1-0
+  name: db1-0
+  namespace: project-snake
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: db1
+    uid: c146d004-da50-4e41-9aff-d1e5892cf5de
+  resourceVersion: "5295"
+  uid: 8062b7d7-6137-4391-9c88-1ff679d780cb
+spec:
+  containers:
+  - image: nginx:1.19.2-alpine
+    imagePullPolicy: IfNotPresent
+    name: db1
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/nginx/nginx.conf
+      name: nginx-config
+      subPath: nginx.conf
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-xlmmb
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostname: db1-0
+  nodeName: cluster1-worker2
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  subdomain: db1
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: db1
+    name: nginx-config
+  - name: kube-api-access-xlmmb
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:59Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:24Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:24Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:59Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://92bc52d65fc6386f8cb462ab7d3f0d7551f3c14af0e8e132d59c364ceb6e28d3
+    image: docker.io/library/nginx:1.19.2-alpine
+    imageID: docker.io/library/nginx@sha256:a97eb9ecc708c8aa715ccfb5e9338f5456e4b65575daf304f108301f3b497314
+    lastState: {}
+    name: db1
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-09-29T14:31:23Z"
+  hostIP: 192.168.100.13
+  phase: Running
+  podIP: 10.47.0.11
+  podIPs:
+  - ip: 10.47.0.11
+  qosClass: BestEffort
+  startTime: "2022-09-29T14:30:59Z"

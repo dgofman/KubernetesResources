@@ -1,0 +1,114 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generateName: c13-3cc-runner-74b77ff9b5-
+  labels:
+    id: c13-3cc-runner
+    pod-template-hash: 74b77ff9b5
+  name: c13-3cc-runner-74b77ff9b5-bfwwl
+  namespace: project-c13
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: c13-3cc-runner-74b77ff9b5
+    uid: e5533dcb-3f8e-4777-bc3e-f8f69a0f2f42
+  resourceVersion: "5280"
+  uid: 5989d1cf-e5e6-49ac-b414-91ddfff58152
+spec:
+  containers:
+  - args:
+    - sh
+    - -c
+    - sleep 2d
+    image: python:3.7.4-alpine3.9
+    imagePullPolicy: IfNotPresent
+    name: python
+    resources:
+      requests:
+        cpu: 30m
+        memory: 10Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-4v8t6
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: cluster1-worker2
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-4v8t6
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:58Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:21Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:21Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:58Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://706dbc18aebe685b3f8768a55219dc8a6abcfc0d54b6f717cd3a6758305bc962
+    image: docker.io/library/python:3.7.4-alpine3.9
+    imageID: docker.io/library/python@sha256:0eb2ee4c795e44be3a643e023af28de4c176bee28ba9413c18e08ec10f76c889
+    lastState: {}
+    name: python
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-09-29T14:31:21Z"
+  hostIP: 192.168.100.13
+  phase: Running
+  podIP: 10.47.0.7
+  podIPs:
+  - ip: 10.47.0.7
+  qosClass: Burstable
+  startTime: "2022-09-29T14:30:58Z"

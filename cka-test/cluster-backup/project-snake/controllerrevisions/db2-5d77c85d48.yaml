@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: db2
+      spec:
+        containers:
+        - image: nginx:1.19.2-alpine
+          imagePullPolicy: IfNotPresent
+          name: db2
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/nginx/nginx.conf
+            name: nginx-config
+            subPath: nginx.conf
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: db2
+          name: nginx-config
+kind: ControllerRevision
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"name":"db2","namespace":"project-snake"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"db2"}},"serviceName":"db2","template":{"metadata":{"labels":{"app":"db2"}},"spec":{"containers":[{"image":"nginx:1.19.2-alpine","name":"db2","volumeMounts":[{"mountPath":"/etc/nginx/nginx.conf","name":"nginx-config","subPath":"nginx.conf"}]}],"volumes":[{"configMap":{"name":"db2"},"name":"nginx-config"}]}}}}
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  labels:
+    app: db2
+    controller.kubernetes.io/hash: 5d77c85d48
+  name: db2-5d77c85d48
+  namespace: project-snake
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: db2
+    uid: 835d3f53-cb3b-4a7c-b3a4-5e0311184760
+  resourceVersion: "4924"
+  uid: c9e2fac4-55c1-4a2c-b249-21acd7c6b0ed
+revision: 1

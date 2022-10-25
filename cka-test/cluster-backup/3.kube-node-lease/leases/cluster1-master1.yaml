@@ -1,0 +1,17 @@
+apiVersion: coordination.k8s.io/v1
+kind: Lease
+metadata:
+  creationTimestamp: "2022-09-29T13:44:31Z"
+  name: cluster1-master1
+  namespace: kube-node-lease
+  ownerReferences:
+  - apiVersion: v1
+    kind: Node
+    name: cluster1-master1
+    uid: 8402762d-db0c-4c26-a5ce-8ef0b60e2854
+  resourceVersion: "11132"
+  uid: e309e4b3-154e-4e7a-9739-262350e60002
+spec:
+  holderIdentity: cluster1-master1
+  leaseDurationSeconds: 40
+  renewTime: "2022-10-25T18:13:53.772360Z"

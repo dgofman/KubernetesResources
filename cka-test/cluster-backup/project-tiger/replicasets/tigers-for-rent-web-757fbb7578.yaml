@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "2"
+    deployment.kubernetes.io/max-replicas: "3"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generation: 1
+  labels:
+    id: tigers-for-rent-web
+    pod-template-hash: 757fbb7578
+  name: tigers-for-rent-web-757fbb7578
+  namespace: project-tiger
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: tigers-for-rent-web
+    uid: c87ffc7a-b305-4c25-93a7-900b9c67f656
+  resourceVersion: "5510"
+  uid: 5f995029-506b-4765-a95a-741a61afe840
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      id: tigers-for-rent-web
+      pod-template-hash: 757fbb7578
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: tigers-for-rent-web
+        pod-template-hash: 757fbb7578
+    spec:
+      containers:
+      - image: httpd:2.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: httpd
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  fullyLabeledReplicas: 2
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2

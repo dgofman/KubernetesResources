@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "4"
+    deployment.kubernetes.io/max-replicas: "5"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generation: 1
+  labels:
+    id: c14-3cc-runner
+    pod-template-hash: bd97f8cdc
+  name: c14-3cc-runner-bd97f8cdc
+  namespace: project-c14
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: c14-3cc-runner
+    uid: 3fdda751-8257-4190-86a5-205e09d584f3
+  resourceVersion: "5490"
+  uid: 3e87ce15-33e8-4855-a224-2831a99cde3e
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      id: c14-3cc-runner
+      pod-template-hash: bd97f8cdc
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: c14-3cc-runner
+        pod-template-hash: bd97f8cdc
+    spec:
+      containers:
+      - args:
+        - sh
+        - -c
+        - sleep 2d
+        image: python:3.7.4-alpine3.9
+        imagePullPolicy: IfNotPresent
+        name: python
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 4
+  fullyLabeledReplicas: 4
+  observedGeneration: 1
+  readyReplicas: 4
+  replicas: 4

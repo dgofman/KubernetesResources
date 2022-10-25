@@ -1,0 +1,110 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generateName: c13-2x3-api-59ffbdc698-
+  labels:
+    id: c13-2x3-api
+    pod-template-hash: 59ffbdc698
+  name: c13-2x3-api-59ffbdc698-r6znv
+  namespace: project-c13
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: c13-2x3-api-59ffbdc698
+    uid: 1df7e50d-1177-4896-92f5-7d8091294d53
+  resourceVersion: "5221"
+  uid: 370f51d6-b28a-4490-b9e3-7284a3591743
+spec:
+  containers:
+  - image: httpd:2.4-alpine
+    imagePullPolicy: IfNotPresent
+    name: api
+    resources:
+      requests:
+        cpu: 50m
+        memory: 20Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-7rbkj
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: cluster1-worker2
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-7rbkj
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:58Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:15Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:15Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:58Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://d6de44923540af69d14635c5614feb63e8d1dbee3c7fc9c7febcb8e612032720
+    image: docker.io/library/httpd:2.4-alpine
+    imageID: docker.io/library/httpd@sha256:d7001e78101e7873db646e913694a89b54ff276eb4d8423eb2668393981a1dcf
+    lastState: {}
+    name: api
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-09-29T14:31:14Z"
+  hostIP: 192.168.100.13
+  phase: Running
+  podIP: 10.47.0.5
+  podIPs:
+  - ip: 10.47.0.5
+  qosClass: Burstable
+  startTime: "2022-09-29T14:30:58Z"

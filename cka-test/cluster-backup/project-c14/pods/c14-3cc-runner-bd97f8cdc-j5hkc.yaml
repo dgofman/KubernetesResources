@@ -1,0 +1,111 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generateName: c14-3cc-runner-bd97f8cdc-
+  labels:
+    id: c14-3cc-runner
+    pod-template-hash: bd97f8cdc
+  name: c14-3cc-runner-bd97f8cdc-j5hkc
+  namespace: project-c14
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: c14-3cc-runner-bd97f8cdc
+    uid: 3e87ce15-33e8-4855-a224-2831a99cde3e
+  resourceVersion: "5404"
+  uid: 89e5d93d-57d9-4f98-a45b-e4284ae2d4d9
+spec:
+  containers:
+  - args:
+    - sh
+    - -c
+    - sleep 2d
+    image: python:3.7.4-alpine3.9
+    imagePullPolicy: IfNotPresent
+    name: python
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-tbfxq
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: cluster1-worker2
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-tbfxq
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:00Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:34Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:34Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:00Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://4baadb8730b7981e08a726624eea9ec33d11debaa84cebac25e8ef4744811327
+    image: docker.io/library/python:3.7.4-alpine3.9
+    imageID: docker.io/library/python@sha256:0eb2ee4c795e44be3a643e023af28de4c176bee28ba9413c18e08ec10f76c889
+    lastState: {}
+    name: python
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-09-29T14:31:33Z"
+  hostIP: 192.168.100.13
+  phase: Running
+  podIP: 10.47.0.15
+  podIPs:
+  - ip: 10.47.0.15
+  qosClass: BestEffort
+  startTime: "2022-09-29T14:31:00Z"

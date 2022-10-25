@@ -1,0 +1,53 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 10.47.0.10
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker2
+  targetRef:
+    kind: Pod
+    name: o3db-0
+    namespace: project-c13
+    uid: fefdff49-acaf-4bb1-baa8-47678d8e50d9
+- addresses:
+  - 10.44.0.24
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker1
+  targetRef:
+    kind: Pod
+    name: o3db-1
+    namespace: project-c13
+    uid: e2a72d3b-292a-45fa-829d-7a681bd0ca3c
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:31:44Z"
+  creationTimestamp: "2022-09-29T14:30:57Z"
+  generateName: o3db-
+  generation: 3
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kubernetes.io/service-name: o3db
+    service.kubernetes.io/headless: ""
+  name: o3db-mm59z
+  namespace: project-c13
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: o3db
+    uid: 623364ca-bb1e-4d3e-bcbb-05750c8d5caf
+  resourceVersion: "5537"
+  uid: 24c466e9-b42d-486c-905f-2ee0bf324ccf
+ports:
+- name: o3db
+  port: 80
+  protocol: TCP

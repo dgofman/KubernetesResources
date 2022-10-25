@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generateName: web-test-599796b486-
+  labels:
+    id: web-test
+    pod-template-hash: 599796b486
+  name: web-test-599796b486-9lnsw
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: web-test-599796b486
+    uid: 859be8d1-6ca0-4061-a828-828f2f4ac2f0
+  resourceVersion: "5191"
+  uid: 1b6a2db0-b95f-4f4d-ada0-f24b6549879f
+spec:
+  containers:
+  - image: httpd:2.4-alpine
+    imagePullPolicy: IfNotPresent
+    name: httpd
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-pnc9m
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: cluster1-worker2
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-pnc9m
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:58Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:13Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:31:13Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T14:30:58Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://9f795512056df034f0c4656410b1eade9539a21bc74ea897cbb3e0b65e9863b5
+    image: docker.io/library/httpd:2.4-alpine
+    imageID: docker.io/library/httpd@sha256:d7001e78101e7873db646e913694a89b54ff276eb4d8423eb2668393981a1dcf
+    lastState: {}
+    name: httpd
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-09-29T14:31:12Z"
+  hostIP: 192.168.100.13
+  phase: Running
+  podIP: 10.47.0.2
+  podIPs:
+  - ip: 10.47.0.2
+  qosClass: BestEffort
+  startTime: "2022-09-29T14:30:58Z"

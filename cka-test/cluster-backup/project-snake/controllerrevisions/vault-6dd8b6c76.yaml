@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: vault
+      spec:
+        containers:
+        - image: nginx:1.19.2-alpine
+          imagePullPolicy: IfNotPresent
+          name: vault
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /etc/nginx/nginx.conf
+            name: nginx-config
+            subPath: nginx.conf
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: vault
+          name: nginx-config
+kind: ControllerRevision
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"name":"vault","namespace":"project-snake"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"vault"}},"serviceName":"vault","template":{"metadata":{"labels":{"app":"vault"}},"spec":{"containers":[{"image":"nginx:1.19.2-alpine","name":"vault","volumeMounts":[{"mountPath":"/etc/nginx/nginx.conf","name":"nginx-config","subPath":"nginx.conf"}]}],"volumes":[{"configMap":{"name":"vault"},"name":"nginx-config"}]}}}}
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  labels:
+    app: vault
+    controller.kubernetes.io/hash: 6dd8b6c76
+  name: vault-6dd8b6c76
+  namespace: project-snake
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: vault
+    uid: b1934108-aae8-4208-bd21-e8f5b61ea64c
+  resourceVersion: "4935"
+  uid: 4b653091-2dba-4689-b1ec-312222a7ce4a
+revision: 1

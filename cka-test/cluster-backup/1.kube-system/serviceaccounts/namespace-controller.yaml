@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:29Z"
+  name: namespace-controller
+  namespace: kube-system
+  resourceVersion: "211"
+  uid: ad123b09-0623-4b7f-a417-62cf6b52dacd

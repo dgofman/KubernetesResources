@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:40Z"
+  name: ephemeral-volume-controller
+  namespace: kube-system
+  resourceVersion: "292"
+  uid: eb23e273-bf3c-4239-9e0b-d53cff6bb100

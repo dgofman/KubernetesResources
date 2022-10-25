@@ -1,0 +1,20 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-09-29T13:44:28Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:token-cleaner
+  namespace: kube-system
+  resourceVersion: "191"
+  uid: 2eb1e13b-3ccf-4f4f-8a5a-348da8e874c2
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: system:controller:token-cleaner
+subjects:
+- kind: ServiceAccount
+  name: token-cleaner
+  namespace: kube-system

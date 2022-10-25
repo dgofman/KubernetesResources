@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "2"
+    deployment.kubernetes.io/max-replicas: "3"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generation: 1
+  labels:
+    id: c14-2x3-api
+    pod-template-hash: 6b65f59c44
+  name: c14-2x3-api-6b65f59c44
+  namespace: project-c14
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: c14-2x3-api
+    uid: 1580d5e6-2afa-42e9-9fbb-6003f287fa6b
+  resourceVersion: "5458"
+  uid: ce400772-d79b-4c2d-a49d-d300eb290d38
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      id: c14-2x3-api
+      pod-template-hash: 6b65f59c44
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: c14-2x3-api
+        pod-template-hash: 6b65f59c44
+    spec:
+      containers:
+      - image: httpd:2.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: api
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  fullyLabeledReplicas: 2
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2

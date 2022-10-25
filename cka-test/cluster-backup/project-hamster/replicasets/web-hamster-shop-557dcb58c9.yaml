@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  generation: 1
+  labels:
+    id: web-hamster-shop
+    pod-template-hash: 557dcb58c9
+  name: web-hamster-shop-557dcb58c9
+  namespace: project-hamster
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: web-hamster-shop
+    uid: 3c673526-3d27-4d88-83dd-8d68bc9636f6
+  resourceVersion: "5493"
+  uid: 35ce5958-79fb-4f53-97c9-e2f3b340e309
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      id: web-hamster-shop
+      pod-template-hash: 557dcb58c9
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: web-hamster-shop
+        pod-template-hash: 557dcb58c9
+    spec:
+      containers:
+      - image: httpd:2.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: httpd
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1

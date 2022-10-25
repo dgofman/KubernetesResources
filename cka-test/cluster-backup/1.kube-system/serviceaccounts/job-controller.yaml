@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:39Z"
+  name: job-controller
+  namespace: kube-system
+  resourceVersion: "290"
+  uid: 7ec38a8b-28b9-42d2-89a9-30b602cb9fcd

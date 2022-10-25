@@ -1,0 +1,37 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    cloud.weave.works/launcher-info: |-
+      {
+        "original-request": {
+          "url": "/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIyNSIsIEdpdFZlcnNpb246InYxLjI1LjIiLCBHaXRDb21taXQ6IjU4MzU1NDRjYTU2OGI3NTdhOGVjYWU1YzE1M2YzMTdlNTczNjcwMGUiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIyLTA5LTIxVDE0OjMzOjQ5WiIsIEdvVmVyc2lvbjoiZ28xLjE5LjEiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpLdXN0b21pemUgVmVyc2lvbjogdjQuNS43ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMjUiLCBHaXRWZXJzaW9uOiJ2MS4yNS4yIiwgR2l0Q29tbWl0OiI1ODM1NTQ0Y2E1NjhiNzU3YThlY2FlNWMxNTNmMzE3ZTU3MzY3MDBlIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMi0wOS0yMVQxNDoyNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xOS4xIiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K",
+          "date": "Thu Sep 29 2022 13:44:32 GMT+0000 (UTC)"
+        },
+        "email-address": "support@weave.works"
+      }
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"Role","metadata":{"annotations":{"cloud.weave.works/launcher-info":"{\n  \"original-request\": {\n    \"url\": \"/k8s/v1.16/net.yaml?k8s-version=Q2xpZW50IFZlcnNpb246IHZlcnNpb24uSW5mb3tNYWpvcjoiMSIsIE1pbm9yOiIyNSIsIEdpdFZlcnNpb246InYxLjI1LjIiLCBHaXRDb21taXQ6IjU4MzU1NDRjYTU2OGI3NTdhOGVjYWU1YzE1M2YzMTdlNTczNjcwMGUiLCBHaXRUcmVlU3RhdGU6ImNsZWFuIiwgQnVpbGREYXRlOiIyMDIyLTA5LTIxVDE0OjMzOjQ5WiIsIEdvVmVyc2lvbjoiZ28xLjE5LjEiLCBDb21waWxlcjoiZ2MiLCBQbGF0Zm9ybToibGludXgvYW1kNjQifQpLdXN0b21pemUgVmVyc2lvbjogdjQuNS43ClNlcnZlciBWZXJzaW9uOiB2ZXJzaW9uLkluZm97TWFqb3I6IjEiLCBNaW5vcjoiMjUiLCBHaXRWZXJzaW9uOiJ2MS4yNS4yIiwgR2l0Q29tbWl0OiI1ODM1NTQ0Y2E1NjhiNzU3YThlY2FlNWMxNTNmMzE3ZTU3MzY3MDBlIiwgR2l0VHJlZVN0YXRlOiJjbGVhbiIsIEJ1aWxkRGF0ZToiMjAyMi0wOS0yMVQxNDoyNzoxM1oiLCBHb1ZlcnNpb246ImdvMS4xOS4xIiwgQ29tcGlsZXI6ImdjIiwgUGxhdGZvcm06ImxpbnV4L2FtZDY0In0K\",\n    \"date\": \"Thu Sep 29 2022 13:44:32 GMT+0000 (UTC)\"\n  },\n  \"email-address\": \"support@weave.works\"\n}"},"labels":{"name":"weave-net"},"name":"weave-net","namespace":"kube-system"},"rules":[{"apiGroups":[""],"resourceNames":["weave-net"],"resources":["configmaps"],"verbs":["get","update"]},{"apiGroups":[""],"resources":["configmaps"],"verbs":["create"]}]}
+  creationTimestamp: "2022-09-29T13:44:32Z"
+  labels:
+    name: weave-net
+  name: weave-net
+  namespace: kube-system
+  resourceVersion: "264"
+  uid: 75e1e9a7-5523-4a16-9a13-d1e047f9a9ad
+rules:
+- apiGroups:
+  - ""
+  resourceNames:
+  - weave-net
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - create

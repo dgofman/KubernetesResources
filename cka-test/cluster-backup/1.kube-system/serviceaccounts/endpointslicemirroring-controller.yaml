@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:40Z"
+  name: endpointslicemirroring-controller
+  namespace: kube-system
+  resourceVersion: "298"
+  uid: 14ef584c-72bf-47c6-bebe-c9532becab8a

@@ -1,0 +1,123 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/config.hash: 1b4ec57c7539e328a88efd5716679c12
+    kubernetes.io/config.mirror: 1b4ec57c7539e328a88efd5716679c12
+    kubernetes.io/config.seen: "2022-09-29T13:44:30.930619537Z"
+    kubernetes.io/config.source: file
+  creationTimestamp: "2022-09-29T13:44:31Z"
+  labels:
+    component: kube-scheduler
+    tier: control-plane
+  name: kube-scheduler-cluster1-master1
+  namespace: kube-system
+  ownerReferences:
+  - apiVersion: v1
+    controller: true
+    kind: Node
+    name: cluster1-master1
+    uid: 8402762d-db0c-4c26-a5ce-8ef0b60e2854
+  resourceVersion: "407"
+  uid: ac8cbac0-b91b-45ee-b37b-8b78c0163c50
+spec:
+  containers:
+  - command:
+    - kube-scheduler
+    - --authentication-kubeconfig=/etc/kubernetes/scheduler.conf
+    - --authorization-kubeconfig=/etc/kubernetes/scheduler.conf
+    - --bind-address=127.0.0.1
+    - --kubeconfig=/etc/kubernetes/scheduler.conf
+    - --leader-elect=true
+    image: registry.k8s.io/kube-scheduler:v1.25.2
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 127.0.0.1
+        path: /healthz
+        port: 10259
+        scheme: HTTPS
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 15
+    name: kube-scheduler
+    resources:
+      requests:
+        cpu: 100m
+    startupProbe:
+      failureThreshold: 24
+      httpGet:
+        host: 127.0.0.1
+        path: /healthz
+        port: 10259
+        scheme: HTTPS
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 15
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/kubernetes/scheduler.conf
+      name: kubeconfig
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostNetwork: true
+  nodeName: cluster1-master1
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    operator: Exists
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes/scheduler.conf
+      type: FileOrCreate
+    name: kubeconfig
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T13:44:32Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T13:44:39Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T13:44:39Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-09-29T13:44:32Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://f9db6af1206e5789adad397c3a151a19ad504cf2b0d6d5f1c5998c5f07860789
+    image: registry.k8s.io/kube-scheduler:v1.25.2
+    imageID: registry.k8s.io/kube-scheduler@sha256:ef2e24a920a7432aff5b435562301dde3beb528b0c7bbec58ddf0a9af64d5fce
+    lastState: {}
+    name: kube-scheduler
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-09-29T13:44:22Z"
+  hostIP: 192.168.100.11
+  phase: Running
+  podIP: 192.168.100.11
+  podIPs:
+  - ip: 192.168.100.11
+  qosClass: Burstable
+  startTime: "2022-09-29T13:44:32Z"

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:30Z"
+  name: coredns
+  namespace: kube-system
+  resourceVersion: "234"
+  uid: 578108ef-6998-4e65-bfb7-dccbda18288f

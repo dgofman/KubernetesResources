@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:42Z"
+  name: resourcequota-controller
+  namespace: kube-system
+  resourceVersion: "313"
+  uid: 21d8c287-00de-4659-ab97-7140f3de9636

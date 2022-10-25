@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"tigers-for-rent-web","namespace":"project-tiger"},"spec":{"replicas":2,"selector":{"matchLabels":{"id":"tigers-for-rent-web"}},"template":{"metadata":{"labels":{"id":"tigers-for-rent-web"}},"spec":{"containers":[{"image":"httpd:2.4-alpine","name":"httpd"}]}}}}
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generation: 1
+  name: tigers-for-rent-web
+  namespace: project-tiger
+  resourceVersion: "5511"
+  uid: c87ffc7a-b305-4c25-93a7-900b9c67f656
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      id: tigers-for-rent-web
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        id: tigers-for-rent-web
+    spec:
+      containers:
+      - image: httpd:2.4-alpine
+        imagePullPolicy: IfNotPresent
+        name: httpd
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2022-09-29T14:31:38Z"
+    lastUpdateTime: "2022-09-29T14:31:38Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-09-29T14:30:59Z"
+    lastUpdateTime: "2022-09-29T14:31:38Z"
+    message: ReplicaSet "tigers-for-rent-web-757fbb7578" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2
+  updatedReplicas: 2

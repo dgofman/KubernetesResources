@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: nginx
+      spec:
+        containers:
+        - image: nginx
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            name: web
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 10
+kind: ControllerRevision
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"name":"o3db","namespace":"project-c13"},"spec":{"replicas":2,"selector":{"matchLabels":{"app":"nginx"}},"serviceName":"nginx","template":{"metadata":{"labels":{"app":"nginx"}},"spec":{"containers":[{"image":"nginx","name":"nginx","ports":[{"containerPort":80,"name":"web"}]}],"terminationGracePeriodSeconds":10}}}}
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  labels:
+    app: nginx
+    controller.kubernetes.io/hash: 5fbd4bb9cc
+  name: o3db-5fbd4bb9cc
+  namespace: project-c13
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: o3db
+    uid: 4311216e-e9b8-49ab-9868-d2db2a24f395
+  resourceVersion: "4900"
+  uid: c007ae94-34e2-4084-8170-a9049367f88d
+revision: 1

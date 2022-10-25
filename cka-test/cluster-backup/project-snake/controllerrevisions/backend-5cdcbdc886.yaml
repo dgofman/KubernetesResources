@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: backend
+      spec:
+        containers:
+        - image: nginx:1.19.2-alpine
+          imagePullPolicy: IfNotPresent
+          name: backend
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+kind: ControllerRevision
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"name":"backend","namespace":"project-snake"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"backend"}},"serviceName":"vault","template":{"metadata":{"labels":{"app":"backend"}},"spec":{"containers":[{"image":"nginx:1.19.2-alpine","name":"backend"}]}}}}
+  creationTimestamp: "2022-09-29T14:30:59Z"
+  labels:
+    app: backend
+    controller.kubernetes.io/hash: 5cdcbdc886
+  name: backend-5cdcbdc886
+  namespace: project-snake
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: backend
+    uid: f8a9f09c-e775-4bc4-805e-98486426acd7
+  resourceVersion: "4899"
+  uid: 16cf58cf-2009-46ac-a75a-111750e273c7
+revision: 1

@@ -1,0 +1,65 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 10.47.0.16
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker2
+  targetRef:
+    kind: Pod
+    name: c14-2x3-web-9c5588c7d-d2w94
+    namespace: project-c14
+    uid: 556b0f08-45b7-463b-97aa-458900a03acc
+- addresses:
+  - 10.44.0.16
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker1
+  targetRef:
+    kind: Pod
+    name: c14-2x3-web-9c5588c7d-plrqw
+    namespace: project-c14
+    uid: 185e4985-378f-414b-89b1-1bafc1ab9350
+- addresses:
+  - 10.44.0.19
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker1
+  targetRef:
+    kind: Pod
+    name: c14-2x3-web-9c5588c7d-msbns
+    namespace: project-c14
+    uid: b8539d54-be1c-4bea-ab6d-76e80f3d9e3a
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:31:38Z"
+  creationTimestamp: "2022-09-29T14:30:58Z"
+  generateName: c14-2x3-web-svc-
+  generation: 4
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    id: c14-2x3-web-svc
+    kubernetes.io/service-name: c14-2x3-web-svc
+  name: c14-2x3-web-svc-b8ffs
+  namespace: project-c14
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: c14-2x3-web-svc
+    uid: 9e040310-1445-40ca-b937-0361fa424028
+  resourceVersion: "5505"
+  uid: 246fd0f4-fd27-4d99-bc3a-807cbf930c7e
+ports:
+- name: 4545-80
+  port: 80
+  protocol: TCP

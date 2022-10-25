@@ -1,0 +1,16 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: "2022-09-29T13:44:30Z"
+  name: kubeadm:bootstrap-signer-clusterinfo
+  namespace: kube-public
+  resourceVersion: "228"
+  uid: e69325e0-4372-4372-b212-aedd79e78ea9
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kubeadm:bootstrap-signer-clusterinfo
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: system:anonymous

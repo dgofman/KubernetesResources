@@ -1,0 +1,77 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 10.47.0.9
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker2
+  targetRef:
+    kind: Pod
+    name: c13-3cc-web-77b98d5fd8-skr26
+    namespace: project-c13
+    uid: fff5a5a7-2672-4eab-afe0-2487e0d883d9
+- addresses:
+  - 10.47.0.13
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker2
+  targetRef:
+    kind: Pod
+    name: c13-3cc-web-77b98d5fd8-fxrv6
+    namespace: project-c13
+    uid: e397ab3c-6883-48e0-a8d9-1bb479b51309
+- addresses:
+  - 10.44.0.15
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker1
+  targetRef:
+    kind: Pod
+    name: c13-3cc-web-77b98d5fd8-gjj7d
+    namespace: project-c13
+    uid: a3ccdc4f-8349-46a7-87fc-7fabfa8bba0a
+- addresses:
+  - 10.44.0.17
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: cluster1-worker1
+  targetRef:
+    kind: Pod
+    name: c13-3cc-web-77b98d5fd8-p9l98
+    namespace: project-c13
+    uid: c8f700c2-3288-4d82-a143-23be70ed0c24
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:32:02Z"
+  creationTimestamp: "2022-09-29T14:30:57Z"
+  generateName: c13-3cc-web-
+  generation: 8
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    id: c13-3cc-web
+    kubernetes.io/service-name: c13-3cc-web
+  name: c13-3cc-web-fwn97
+  namespace: project-c13
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: c13-3cc-web
+    uid: 2d0e7eac-d707-4a67-bf59-e1542ccab72d
+  resourceVersion: "5577"
+  uid: 15b4bf64-e59f-47bf-bca8-7b7d380e94fb
+ports:
+- name: 6363-80
+  port: 80
+  protocol: TCP

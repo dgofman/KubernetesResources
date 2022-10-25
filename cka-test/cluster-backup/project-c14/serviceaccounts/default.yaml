@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T14:30:53Z"
+  name: default
+  namespace: project-c14
+  resourceVersion: "4395"
+  uid: e3ca6026-fb45-471f-926a-9e56545ad5ae

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T14:30:53Z"
+  name: default
+  namespace: project-hamster
+  resourceVersion: "4397"
+  uid: c669c499-0480-44cc-a364-5e59fb6ab5ef

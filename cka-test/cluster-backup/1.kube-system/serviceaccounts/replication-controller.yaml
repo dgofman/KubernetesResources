@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:39Z"
+  name: replication-controller
+  namespace: kube-system
+  resourceVersion: "288"
+  uid: 831aaec2-bc66-4d3a-b97f-89eb071abf41

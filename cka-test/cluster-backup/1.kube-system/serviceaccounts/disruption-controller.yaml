@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-09-29T13:44:42Z"
+  name: disruption-controller
+  namespace: kube-system
+  resourceVersion: "316"
+  uid: d7727c59-2c6d-485e-9bf1-de19cb5606e1

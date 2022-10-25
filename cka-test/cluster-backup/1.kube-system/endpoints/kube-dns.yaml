@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2022-09-29T14:38:04Z"
+  creationTimestamp: "2022-09-29T13:44:43Z"
+  labels:
+    k8s-app: kube-dns
+    kubernetes.io/cluster-service: "true"
+    kubernetes.io/name: CoreDNS
+  name: kube-dns
+  namespace: kube-system
+  resourceVersion: "6245"
+  uid: 58f1ed61-1d25-4e21-8238-fca781319bf3
+subsets:
+- addresses:
+  - ip: 10.32.0.2
+    nodeName: cluster1-master1
+    targetRef:
+      kind: Pod
+      name: coredns-f84d8458b-n7ln2
+      namespace: kube-system
+      uid: bccbb1c6-1822-4943-aea7-fd8661752d21
+  - ip: 10.44.0.26
+    nodeName: cluster1-worker1
+    targetRef:
+      kind: Pod
+      name: coredns-f84d8458b-bjdjr
+      namespace: kube-system
+      uid: b88e8152-a1d0-4222-9391-8992dc4d958a
+  ports:
+  - name: dns-tcp
+    port: 53
+    protocol: TCP
+  - name: dns
+    port: 53
+    protocol: UDP
+  - name: metrics
+    port: 9153
+    protocol: TCP
